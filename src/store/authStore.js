@@ -30,6 +30,7 @@ export const authStore = create((set) => ({
 
         try {
             const response = await axios.post(`${API_URL}/login`, {email, password})
+            console.log("SENDING LOGIN REQUEST", `${API_URL}/login`)
             set({user: response.data.user, isAuthenticated: true, isLoading: false})
         } catch (error) {
             set({error: error.response.data.message || 'Login failed', isLoading: false})
